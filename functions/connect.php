@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
-$user = "root";
-$password = "";
+$user = "laici";
+$password = "laici";
 $db = "db_elearning";
 
 // $con = mysqli_connect($host,$user,$password) or die("Could not connect to database");
