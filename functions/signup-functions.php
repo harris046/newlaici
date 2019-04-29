@@ -4,20 +4,20 @@ include "connect.php";
 extract($_POST);
 
 	$fname = str_replace("'","`",$fname); 
-	$fname = mysql_real_escape_string($fname);
+	$fname = mysqli_real_escape_string($conn, $fname);
 	
 	$lname = str_replace("'","`",$lname); 
-	$lname = mysql_real_escape_string($lname); 
+	$lname = mysqli_real_escape_string($conn, $lname); 
 	        
 	$username = str_replace("'","`",$username); 
-	$username = mysql_real_escape_string($username); 
+	$username = mysqli_real_escape_string($conn, $username); 
 
 	$password = str_replace("'","`",$password); 
-	$password = mysql_real_escape_string($password);
+	$password = mysqli_real_escape_string($conn, $password);
 	$password = md5($password);
 
 $sql = "INSERT INTO `tbl_user`(`fname`, `mname`, `lname`, `dob`, `gender`, `course`, `yrlvl`, `username`, `password`) VALUES  ('$fname','$mname','$lname','$dob','$gender','$course','$yrlvl','$username','$password')";
-$result = mysql_query($sql);
+$result = mysqli_query($conn, $sql);
 
  if($result==true)
                             {

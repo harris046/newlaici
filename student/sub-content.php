@@ -111,14 +111,14 @@ if($_POST){
         require_once "../functions/connect.php";
        
 
-        $sql = mysql_query("SELECT * FROM `tbl_subtopic`  WHERE `sub_Id`=".$_GET["sub_Id"]);
-        if(mysql_num_rows($sql)==0)
+        $sql = mysqli_query($conn, "SELECT * FROM `tbl_subtopic`  WHERE `sub_Id`=".$_GET["sub_Id"]);
+        if(mysqli_num_rows($sql)==0)
         {
         echo "<p class='alert alert-danger'>"."No Post have been found"."</p>";
         }
         else                            
         {
-        while($row=mysql_fetch_array($sql)){   
+        while($row=mysqli_fetch_array($sql, MYSQLI_ASSOC)){   
         $id = $row['sub_Id'];
         $title = $row['sub_title'];
         $topic = $row['topic_Id'];

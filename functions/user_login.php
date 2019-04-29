@@ -8,12 +8,12 @@
     $password = $_POST['password'];
     $pwd = md5($password);
 
-    $username = mysql_real_escape_string($_POST['username']);
-    $password = mysql_real_escape_string($_POST['password']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     $query = "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$pwd'";
-    $result = mysql_query($query) or die ("Verification error");
-    $array = mysql_fetch_array($result);
+    $result = mysqli_query($conn, $query) or die ("Verification error");
+    $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
     
     if ($array['username'] == $username){
         $_SESSION['username'] = $username;
