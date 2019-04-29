@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ACS E-Learning</title>
+<title>LaiCi E-Learning</title>
 <meta charset='utf-8'>
 <link rel='stylesheet' href='css/style.css'/>
  <link rel="icon" type="image/png"  href="../../images/favicon.png">

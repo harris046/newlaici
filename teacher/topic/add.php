@@ -12,7 +12,7 @@ $uname=$_SESSION['uname'];
 <html class="no-js">
     
     <head>
-        <title>ACS E-Learning</title>
+        <title>LaiCi E-Learning</title>
           <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css"></link>
         <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">

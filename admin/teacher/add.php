@@ -12,7 +12,7 @@ $adm_user=$_SESSION['adm_user'];
 <html class="no-js">
     
     <head>
-        <title>ACS E-Learning</title>
+        <title>LaiCi E-Learning</title>
         <!-- Bootstrap -->
         <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="../../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">

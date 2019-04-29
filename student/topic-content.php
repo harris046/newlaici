@@ -15,7 +15,7 @@ $username=$_SESSION['username'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="free-educational-responsive-web-template-webEdu">
 	<meta name="author" content="webThemez.com">
-	<title>ACS E-Learning</title>
+	<title>LaiCi E-Learning</title>
 	 <link rel="icon" type="image/png"  href="../images/favicon.png">
 	<link rel="stylesheet" media="screen" href="../http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
