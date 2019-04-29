@@ -17,7 +17,7 @@
     <div class="login">
       <h1>Student</h1>
       <form method="post" action="../functions/user_login.php">
-        <p><input type="text" name="username" value="" placeholder="admin"></p>
+        <p><input type="text" name="username" value="" placeholder="student"></p>
         <p><input type="password" name="password" value="" placeholder="*****"></p>
         
         <p class="submit"><input type="submit" name="commit" value="Login"></p>
