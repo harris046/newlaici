@@ -26,9 +26,9 @@
                                         include "../../functions/connect.php";
                                       
                                         $sql = "SELECT * FROM `tbl_teacher` ";
-                                        $run = mysql_query($sql);
+                                        $run = mysqli_query($conn, $sql);
 
-                                        while($row=mysql_fetch_array($run)){
+                                        while($row=mysqli_fetch_array($run, MYSQLI_ASSOC)){
                                             $id = $row['teacher_Id'];
                                             echo '<tr class="odd gradeX" id="rec">';?>
                                            <?php

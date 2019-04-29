@@ -27,10 +27,10 @@
 <body ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
 <h1>Practice what you have learn!</h1>
 
-<?php $response=mysql_query("select * from tbl_quiz");?>
+<?php $response=mysqli_query($conn, "select * from tbl_quiz");?>
 
 <form method='post' id='quiz_form'>
-<?php while($result=mysql_fetch_array($response)){ ?>
+<?php while($result=mysqli_fetch_array($response)){ ?>
 <div id="question_<?php echo $result['quiz_Id'];?>" class='questions'>
 <h2 id="question_<?php echo $result['quiz_Id'];?>"><?php echo $result['quiz_Id'].".".$result['question_name'];?></h2>
 <div class='align'>

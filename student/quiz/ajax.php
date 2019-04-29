@@ -1,12 +1,12 @@
 <?php
 require_once '../../functions/connect.php';
 
-$response=mysql_query("select quiz_Id,question_name,answer from tbl_quiz");
+$response=mysqli_query($conn, "select quiz_Id,question_name,answer from tbl_quiz");
 	 $i=1;
 	 $right_answer=0;
 	 $wrong_answer=0;
 	 $unanswered=0;
-	 while($result=mysql_fetch_array($response)){ 
+	 while($result=mysqli_fetch_array($response, MYSQLI_ASSOC)){ 
 	       if($result['answer']==$_POST["$i"]){
 		       $right_answer++;
 		   }else if($_POST["$i"]==5){
@@ -30,12 +30,12 @@ $response=mysql_query("select quiz_Id,question_name,answer from tbl_quiz");
 
 /*$limit=$_POST['question_num'];
 //$limit1=$limit+1;
-$response=mysql_query("select * from questions");
+$response=mysqli_query("select * from questions");
 
 
 $data=array();
 $data1=array();
-while($result=mysql_fetch_array($response)){
+while($result=mysqli_fetch_array($response)){
 $data['question_name']=$result['question_name'];
 $data['answer1']=$result['answer1'];
 $data['answer2']=$result['answer2'];

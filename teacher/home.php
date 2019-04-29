@@ -70,8 +70,8 @@ $uname=$_SESSION['uname'];
                         <?php
                                     include '../functions/connect.php';
 
-                                    $result=mysql_query("SELECT count(*) as total from tbl_topic");
-                                    $data=mysql_fetch_assoc($result);
+                                    $result=mysqli_query($conn, "SELECT count(*) as total from tbl_topic");
+                                    $data=mysqli_fetch_assoc($result);
                                     $percent = $data['total'];
                                     
                                     ?>
@@ -82,8 +82,8 @@ $uname=$_SESSION['uname'];
                         <?php
                                     include '../functions/connect.php';
 
-                                    $result=mysql_query("SELECT count(*) as total from tbl_quiz");
-                                    $data=mysql_fetch_assoc($result);
+                                    $result=mysqli_query($conn, "SELECT count(*) as total from tbl_quiz");
+                                    $data=mysqli_fetch_assoc($result);
                                     $percent = $data['total'];
                                     
                                     ?>
@@ -94,8 +94,8 @@ $uname=$_SESSION['uname'];
                         <?php
                                     include '../functions/connect.php';
 
-                                    $result=mysql_query("SELECT count(*) as total from tbl_comment");
-                                    $data=mysql_fetch_assoc($result);
+                                    $result=mysqli_query($conn, "SELECT count(*) as total from tbl_comment");
+                                    $data=mysqli_fetch_assoc($result);
                                     $percent = $data['total'];
                                     
                                     ?>
@@ -136,8 +136,8 @@ $uname=$_SESSION['uname'];
                              <?php
                                     include '../functions/connect.php';
 
-                                    $result=mysql_query("SELECT count(*) as total from tbl_topic");
-                                    $data=mysql_fetch_assoc($result);
+                                    $result=mysqli_query($conn, "SELECT count(*) as total from tbl_topic");
+                                    $data=mysqli_fetch_assoc($result);
                                     $percent = $data['total'] * 0.1;
                                     
                                     ?>
@@ -151,8 +151,8 @@ $uname=$_SESSION['uname'];
                                  <?php
                                     include '../functions/connect.php';
 
-                                    $result=mysql_query("SELECT count(*) as total from tbl_quiz");
-                                    $data=mysql_fetch_assoc($result);
+                                    $result=mysqli_query($conn, "SELECT count(*) as total from tbl_quiz");
+                                    $data=mysqli_fetch_assoc($result);
                                     $percent = $data['total'] * 0.1;
                                     
                                     ?>
@@ -175,8 +175,8 @@ $uname=$_SESSION['uname'];
                                  <?php
                                     include '../functions/connect.php';
 
-                                    $result=mysql_query("SELECT count(*) as total from tbl_topic");
-                                    $data=mysql_fetch_assoc($result);
+                                    $result=mysqli_query($conn, "SELECT count(*) as total from tbl_topic");
+                                    $data=mysqli_fetch_assoc($result);
                                     $percent = $data['total'];
                                     
                                     ?>
@@ -202,9 +202,9 @@ $uname=$_SESSION['uname'];
                                         include "../functions/connect.php";
                                       
                                         $sql = "SELECT * FROM `tbl_topic` ";
-                                        $run = mysql_query($sql);
+                                        $run = mysqli_query($conn, $sql);
 
-                                        while($row=mysql_fetch_array($run)){
+                                        while($row=mysqli_fetch_array($run)){
                                             $id = $row['topic_Id'];
                                             echo '<tr class="odd gradeX" id="rec">';
                                             echo "<td>".$row['topic_Id']."</td>";
@@ -243,8 +243,8 @@ $uname=$_SESSION['uname'];
                               <?php
                                     include '../functions/connect.php';
 
-                                    $result=mysql_query("SELECT count(*) as total from tbl_quiz");
-                                    $data=mysql_fetch_assoc($result);
+                                    $result=mysqli_query($conn, "SELECT count(*) as total from tbl_quiz");
+                                    $data=mysqli_fetch_assoc($result);
                                     $percent = $data['total'];
                                     
                                     ?>
@@ -271,9 +271,9 @@ $uname=$_SESSION['uname'];
                                         include "../functions/connect.php";
                                       
                                         $sql = "SELECT * FROM `tbl_quiz` ";
-                                        $run = mysql_query($sql);
+                                        $run = mysqli_query($conn, $sql);
 
-                                        while($row=mysql_fetch_array($run)){
+                                        while($row=mysqli_fetch_array($run)){
                                             $id = $row['quiz_Id'];
                                             echo '<tr class="odd gradeX" id="rec">';?>
                                            <?php

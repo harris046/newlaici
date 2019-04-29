@@ -85,9 +85,9 @@
                                         include "../functions/connect.php";
                                       
                                         $sql = "SELECT * FROM `tbl_topic` ";
-                                        $run = mysql_query($sql);
+                                        $run = mysqli_query($conn, $sql);
 
-                                        while($row=mysql_fetch_array($run)){
+                                        while($row=mysqli_fetch_array($run)){
                                         
                                             $id = $row['topic_Id'];
                                             $title = $row['title'];

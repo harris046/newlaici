@@ -7,9 +7,7 @@ function dbcon(){
 	$pwd = "";
 	$db = "db_elearning";
 
-	$con = mysql_connect($host,$user,$pwd) or die ("ERROR Connecting to Database");
-
-	$sel = mysql_select_db($db);
+	$con = mysqli_connect($host,$user,$pwd, $db) or die ("ERROR Connecting to Database");
 }
 
 function dbclose(){
@@ -18,19 +16,17 @@ function dbclose(){
 	$pwd = "";
 	$db = "db_elearning";
 
-	$con = mysql_connect($host,$user,$pwd) or die ("ERROR Connecting to Database");
+	$con = mysqli_connect($host,$user,$pwd, $db) or die ("ERROR Connecting to Database");
 
-	$sel = mysql_select_db($db);
-
-	mysql_close($con);
+	mysqli_close($con);
 }
 
 function topic(){
 	dbcon();
-	$sel = mysql_query("SELECT * from tbl_topic");
+	$sel = mysqli_query("SELECT * from tbl_topic");
 
 	if($sel==true){
-		while($row=mysql_fetch_assoc($sel)){
+		while($row=mysqli_fetch_assoc($sel)){
 			extract($row);
 			echo '<option value='.$topic_Id.'>'.$name.'</option>';
 		}
