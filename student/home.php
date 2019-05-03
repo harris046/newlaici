@@ -62,8 +62,8 @@ $username=$_SESSION['username'];
 
 	<header id="head" class="secondary">
             <div class="container">
-                    <h1>Categories</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing eliras scele!</p>
+                    <h1>My Subject</h1>
+<p>List of subject you have anrolled are as follows:</p>
                 </div>
     </header>
 
@@ -74,7 +74,7 @@ $username=$_SESSION['username'];
 </div>
 	<div id="courses">
 		<section class="container">
-			<h3>Different Categories</h3>
+			<h3>Subject List</h3>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="featured-box"> 

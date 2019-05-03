@@ -80,7 +80,7 @@ $username=$_SESSION['username'];
 	<header id="head" class="secondary">
             <div class="container">
                     <h1>Topics</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing eliras scele!</p>
+                    <p>Welcome!</p>
                 </div>
     </header>
 

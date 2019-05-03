@@ -116,7 +116,7 @@ $uname=$_SESSION['uname'];
 	                                    <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
 	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
 	                                    <li>
-	                                        <a href="#">Dashboard</a> <span class="divider">/</span>	
+	                                        <a href="home.php">Dashboard</a> <span class="divider">/</span>	
 	                                    </li>
 	                                  
 	                                </ul>
@@ -192,6 +192,7 @@ $uname=$_SESSION['uname'];
                                            
                                             <th>#</th>
                                             <th>Title</th>
+											<th>Date/Time Posted</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -201,24 +202,22 @@ $uname=$_SESSION['uname'];
                                         
                                         include "../functions/connect.php";
                                       
-                                        $sql = "SELECT * FROM `tbl_topic` ";
+                                        $sql = "SELECT * FROM `tbl_topic`";
                                         $run = mysqli_query($conn, $sql);
 
                                         while($row=mysqli_fetch_array($run)){
-                                            $id = $row['topic_Id'];
+											$id = $row['topic_Id'];
                                             echo '<tr class="odd gradeX" id="rec">';
                                             echo "<td>".$row['topic_Id']."</td>";
                                             echo "<td>".$row['title']."</td>";
+											echo "<td>".$row['datetime_posted']."</td>";
                                              echo "<td>".
                                             '<div class="btn-group">
-                                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="500" data-close-others="false">
-                                                Action
-                                            <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                            <li><a href="topic/index.php"><span class="glyphicon glyphicon-edit"></span> View</a></li>
+                                            <a href="topic/index.php" type="button" class="btn btn-default btn-xs " >
+                                                View
+                                            
+                                            </a>
                                            
-                                            </ul>
                                             </div>'
                                                     ."</td>";
         
@@ -260,7 +259,7 @@ $uname=$_SESSION['uname'];
                                         <tr>
                                            
                                             <th>#</th>
-                                         
+											<th>Question</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -278,16 +277,14 @@ $uname=$_SESSION['uname'];
                                             echo '<tr class="odd gradeX" id="rec">';?>
                                            <?php
                                             echo "<td>".$row['quiz_Id']."</td>";
+											echo "<td>".$row['question_name']."</td>";
                                             //echo "<td>".$row['cat_Id']."</td>";
                                              echo "<td>".
                                             '<div class="btn-group">
-                                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="500" data-close-others="false">
-                                                Action
-                                            <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                            <li><a href="quiz/index.php"><span class="glyphicon glyphicon-edit"></span> View</a></li>
-                                            </ul>
+                                            <a href="quiz/index.php" type="button" class="btn btn-default btn-xs " >
+                                                View
+                                            
+                                            </a>
                                             </div>'
                                                     ."</td>";
         
