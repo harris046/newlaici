@@ -82,13 +82,33 @@ function signIn(){
 
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(function(){
-        console.log("sign in success kk");
-        if(email == "lect@lect.com"){
-            window.location.replace("lectpage.php");
+        console.log("sign in success");
+        console.log("to user_login...");
+
+        var xhr = getXHR();
+        xhr.onreadystatechange = function (){
+            if (xhr.readyState == 4){
+                if (xhr.status == 200){
+                    var arr = JSON.parse(this.responseText);
+                    console.log(arr);
+
+                    if(arr.success == "success"){
+                        window.location.href = "home.php";
+                    }
+                    else{
+                        alert("Incorrect email or password!");
+                        form.reset();
+                    }
+                }
+                xhr = null;
+            }
         }
-        else {
-            window.location.replace("studentpage.php");
-        }
+        xhr.open('POST', '../functions/user_login.php', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        var data = 'email=' + email ;
+        xhr.send(data);
+
+        // window.location.href = "home.php";
     })
     .catch(function(error) {
         // Handle Errors here.
@@ -96,6 +116,9 @@ function signIn(){
         var errorMessage = error.message;
         // ...
         console.log("ERROR => "+ error);
+
+        alert("Incorrect email or password!");
+        form.reset();
     });
 
     
@@ -111,5 +134,27 @@ function signOut(){
     })
     .catch(function(error) {
     // An error happened.
+    });
+}
+
+function forgotPass(){
+    var form = document.getElementById("forgotPassForm");
+
+    var email = form.elements["email"].value;
+
+    var auth = firebase.auth();
+    // var emailAddress = "user@example.com";
+
+    auth.sendPasswordResetEmail(email).then(function() {
+        // Email sent.
+        console.log("Email sent");
+
+        alert("Reset password email sent! Please follow instructions in the email.");
+
+    }).catch(function(error) {
+        // An error happened.
+        console.log("Error => " + error);
+        alert("Please enter a valid email registered with our system.");
+        form.reset();
     });
 }

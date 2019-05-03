@@ -10,19 +10,17 @@
   <link rel="stylesheet" href="../scss/style.css">
    <link rel="icon" type="image/png"  href="../images/favicon.png">
   <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
+  
   <script type="text/javascript" src="../js/main.js"></script>
 </head>
 <body>
   <section class="container">
 
     <div class="login">
-      <h1>Student</h1>
-      <form id="loginForm" onsubmit="signIn(); return false;">
-        <p><input type="text" name="email" value="" placeholder="student"></p>
-        <p><input type="password" name="password" value="" placeholder="*****"></p>
-        <p class="submit"><a href="forgotpassword.php">Forgot password</a></p>
-        <p class="submit"><input type="submit" name="commit" value="Login"></p>
+      <h1>Enter your registered email</h1>
+      <form id="forgotPassForm" onsubmit="forgotPass(); return false;">
+        <p><input type="text" name="email" value="" placeholder="Email"></p>
+        <p class="submit"><input type="submit" name="commit" value="Submit"></p>
       </form>
     </div>
 
@@ -33,6 +31,7 @@
   </section>
 
 </body>
+
 <!-- firebase -->
   <!-- Firebase App is always required and must be first -->
   <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>

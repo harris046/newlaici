@@ -63,12 +63,12 @@
     <script>
       // Initialize Firebase
       var config = {
-        apiKey: "AIzaSyA6L9gG1oXm8tgawzfMf9BSCz99mJZ0HsA",
-        authDomain: "laiciris-3037e.firebaseapp.com",
-        databaseURL: "https://laiciris-3037e.firebaseio.com",
-        projectId: "laiciris-3037e",
-        storageBucket: "laiciris-3037e.appspot.com",
-        messagingSenderId: "1081023603889"
+        apiKey: "AIzaSyDYf_Tw0tM2HhxAz8fc8Mle-21Xt7RlMC8",
+        authDomain: "laicielearning.firebaseapp.com",
+        databaseURL: "https://laicielearning.firebaseio.com",
+        projectId: "laicielearning",
+        storageBucket: "laicielearning.appspot.com",
+        messagingSenderId: "973796751991"
       };
       firebase.initializeApp(config);
     </script>
