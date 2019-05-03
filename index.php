@@ -111,7 +111,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-6 panel">
 						<div class="panel-body">
 							<p class="text-right">
-								Copyright &copy; 2015.
+								Copyright &copy; 2019.
 							</p>
 						</div>
 					</div>
