@@ -13,17 +13,21 @@
     $query = "SELECT * FROM tbl_teacher WHERE uname = '$username' AND pwd = '$pwd'";
     $result = mysqli_query($conn, $query) or die ("Verification error");
     $array = mysqli_fetch_array($result);
+
+    echo "username => " . $username ;
+    echo "<br>";
+    echo "array => " . $array['uname'];
     
     if ($array['uname'] == $username){
         $_SESSION['uname'] = $username;
-        header("Location:home.php");
+        // header("Location:home.php");
     }
     
     else{
-    	echo '<script language="javascript">';
-        echo 'alert("Incorrect username or password")';
-        echo '</script>';
-        echo '<meta http-equiv="refresh" content="0;url=index.php" />';
+    	// echo '<script language="javascript">';
+        // echo 'alert("Incorrect username or password")';
+        // echo '</script>';
+        // echo '<meta http-equiv="refresh" content="0;url=index.php" />';
     }
 
 
