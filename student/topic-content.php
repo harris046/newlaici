@@ -120,7 +120,8 @@ $username=$_SESSION['username'];
         <p>Topic Title: <?php echo $title;?></p>
         <p>Category: <?php echo $category;?></p>
         <p>Date and Time: <?php echo $datetime;?></p>
-        <p>Content: <br><?php echo $content;?></p>
+        <p>Content: <br><?php echo "<div align=center><video width='400' height='400' controls><source src='../teacher/video/$content' type='video/mp4'>Your browser does
+not support the video tag.</video></div>"?></p>
         <hr>
 
 

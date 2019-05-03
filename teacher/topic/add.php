@@ -131,28 +131,28 @@ $uname=$_SESSION['uname'];
                                 <div class="muted pull-left">Add Category</div>
                             </div>
                             <div class="block-content collapse in">
-                             <form method="POST" action="add-function.php">
+                             <form method="POST" action="add-function.php" enctype='multipart/form-data'>
                                 <label>Title</label>
                                 <input type="text" class="form-control" name="title"placeholder="e.g. Sample"required>
                                 <label>Content</label>
                                
                         
-                            <!-- block -->
-                     
-                             <div class="block-content collapse in">
-                                   <textarea id="ckeditor_full" name="content"></textarea>
-                                </div>
-                            <!-- /block -->
-                    
+                                <!-- block -->
+                        
+                                <div class="block-content collapse in">
+                                    <input type="file"  name="content" id="content">
+                                    </div>
+                                <!-- /block -->
+                        
 
-                                    <label>Category</label>
-                                    <select class="form-control" name="category">
-                                        <option></option>
-                                        <?php include "function.php"; category(); ?>
-                                    </select>
-                                        <br>
-                                        <input type="submit" class="btn btn-primary" value="Publish">
-                                    </form>
+                                        <label>Category</label>
+                                        <select class="form-control" name="category">
+                                            <option></option>
+                                            <?php include "function.php"; category(); ?>
+                                        </select>
+                                            <br>
+                                            <input type="submit" class="btn btn-primary" value="Publish" name="upd" id="upd">
+                             </form>
                                                   
                             </div>
                             </div>
