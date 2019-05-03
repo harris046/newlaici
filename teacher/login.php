@@ -10,7 +10,7 @@
 	$username = mysqli_real_escape_string($conn, $_POST['uname']);
     $password = mysqli_real_escape_string($conn, $_POST['pwd']);
 
-    $query = "SELECT * FROM tbl_teacher WHERE uname = '$username' AND pwd = '$pwd'";
+    $query = "SELECT * FROM tbl_teacher WHERE uname = '$username' AND pwd = '$pwd' LIMIT 1";
     $result = mysqli_query($conn, $query) or die ("Verification error");
     $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
