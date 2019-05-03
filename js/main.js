@@ -45,7 +45,7 @@ function signUp(){
         xhr.onreadystatechange = function (){
             if (xhr.readyState == 4){
                 if (xhr.status == 200){
-                    var arr = JSON.parse(this.responseText);
+                    var arr = JSON.parse(xhr.responseText);
                     console.log(arr);
 
                     if(arr.success == "success"){
