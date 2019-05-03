@@ -12,7 +12,7 @@
 
     $query = "SELECT * FROM tbl_teacher WHERE uname = '$username' AND pwd = '$pwd'";
     $result = mysqli_query($conn, $query) or die ("Verification error");
-    $array = mysqli_fetch_array($result);
+    $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
     echo "username => " . $username ;
     echo "<br>";
