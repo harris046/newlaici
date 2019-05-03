@@ -14,9 +14,12 @@
     $result = mysqli_query($conn, $query) or die ("Verification error");
     $array = mysqli_fetch_array($result);
     
+    echo "username =>" . $username . "<br>";
+    echo "array => " . $array['uname'];
+
     if ($array['uname'] == $username){
         $_SESSION['uname'] = $username;
-        header("Location:home.php");
+        // header("Location:home.php");
     }
     
     else{
