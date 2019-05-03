@@ -20,14 +20,14 @@
     
     if ($array['uname'] == $username){
         $_SESSION['uname'] = $username;
-        // header("Location:home.php");
+        header("Location:home.php");
     }
     
     else{
-    	// echo '<script language="javascript">';
-        // echo 'alert("Incorrect username or password")';
-        // echo '</script>';
-        // echo '<meta http-equiv="refresh" content="0;url=index.php" />';
+    	echo '<script language="javascript">';
+        echo 'alert("Incorrect username or password")';
+        echo '</script>';
+        echo '<meta http-equiv="refresh" content="0;url=index.php" />';
     }
 
 
