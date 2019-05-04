@@ -74,7 +74,7 @@ $username=$_SESSION['username'];
 </div>
 	<div id="courses">
 		<section class="container">
-			<h3>Different Topics</h3>
+			<h3>List of Topics</h3>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="featured-box"> 
