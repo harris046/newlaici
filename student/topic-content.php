@@ -42,9 +42,17 @@ $username=$_SESSION['username'];
   if (window.sidebar){
     document.onmousedown=disableCopy
     document.onclick=reEnable
-  }
+	}
+	
+	//var
+	var username = '<?= $username ?>';
 
 </script>
+
+<!-- ChatCamp -->
+<script src="../vendors/ChatCamp/ChatCamp.min.js"></script>
+<script type="text/javascript" src="../js/chat.js"></script>
+
 </head>
 <body ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
 	<!-- Fixed navbar -->
@@ -162,10 +170,15 @@ not support the video tag.</video></div>"?></p>
 
 										  ?>
 									</div>
+								</div>	
+								
+								<!-- Live Chat div -->
+								<div class="col-md-4 pull-right">
+									<div class="cc-live-discussion-app" data-channel-id="5ccd3a6061544d0001193929" data-channel-type="open" data-height="500px" data-width="100%"></div>
 								</div>
 				</div>
 				
-			</div>
+									</div>										
 
 		</section>
 	</div>
@@ -201,6 +214,43 @@ not support the video tag.</video></div>"?></p>
 		});
       
 	</script>
+
+<!-- ChatCamp UI -->
+<script src="https://cdn.chatcamp.io/2.x/js/chatcamp-ui.min.js"></script>
+<script>
+	// Initialize ChatCamp
+	window.ChatCampUi.init({
+		appId: "6530329265836126208", 
+		user: {
+			id: username,
+			displayName: username // optional
+			// avatarUrl: USER_AVATAR_URL // optional
+			// accessToken: USER_ACCESS_TOKEN // optional
+		}, 
+		ui: {
+			theme: {
+				primaryBackground: "#3f45ad",
+				primaryText: "#ffffff",
+				secondaryBackground: "#ffffff",
+				secondaryText: "#000000",
+				tertiaryBackground: "#f4f7f9",
+				tertiaryText: "#263238"
+			},
+			roster: {
+				tabs: ['recent', 'rooms', 'users'], 
+				render: false, 
+				defaultMode: 'open', // other possible values are minimize, hidden
+				showUserAvatarUpload: false,
+				showStartNewChat: true
+			},
+			channel: {
+				showAttachFile: true,
+				showVideoCall: true,
+				showVoiceRecording: true
+			}
+		}
+	})
+</script>
     
 </body>
 </html>
