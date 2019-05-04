@@ -29,6 +29,9 @@
     <div class="login-help">
       <p>Not a Member? <a href="signup.php">Register here!</a>.</p>
     </div>
+    <div class="login-help">
+      <p>Back to main page <a href="../index.php">Back</a>.</p>
+    </div>
    
   </section>
 
