@@ -1,12 +1,29 @@
 <?php
-  session_start();
-  if (isset($_SESSION['username'])&&$_SESSION['username']!=""){
-  }
-  else
-  {
-    header("Location:../index.php");
-  }
-$username=$_SESSION['username'];
+	session_start();
+	if (isset($_SESSION['username'])&&$_SESSION['username']!=""){
+	}
+	else
+	{
+	header("Location:../index.php");
+	}
+	$username=$_SESSION['username'];
+	$user_Id = $_SESSION['user_Id'];
+
+	//get enrolled course
+	include "../functions/connect.php";
+
+	$sql = "SELECT t.cat_Id, t.name, t.description FROM tbl_category t 
+            WHERE t.cat_Id IN (SELECT u.cat_Id FROM user_category u WHERE user_Id=$user_Id)";
+    $run = mysqli_query($conn, $sql);
+
+    $enrolledCourseArr = [];
+    while($row=mysqli_fetch_array($run, MYSQLI_ASSOC)){
+        $enrolledCourseArr[] = array(
+			'cat_Id' => $row['cat_Id'],
+			'name' => $row['name'],
+			'description' => $row['description'],
+        );
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +48,7 @@ $username=$_SESSION['username'];
 </head>
 <body>
 	<!-- Fixed navbar -->
-	<<div class="navbar navbar-inverse">
+	<div class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
@@ -41,8 +58,8 @@ $username=$_SESSION['username'];
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="home.php">Home</a></li>
-		
+					<li class=""><a href="home.php">Home</a></li>
+  					<li class=""><a href="new-course.php">New Course</a></li>
 					<li class="dropdown">
 						<a href="../#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $username;?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -62,8 +79,8 @@ $username=$_SESSION['username'];
 
 	<header id="head" class="secondary">
             <div class="container">
-                    <h1>My Subject</h1>
-<p>List of subject you have anrolled are as follows:</p>
+                    <h1>My Courses</h1>
+<p>List of courses you have anrolled are as follows:</p>
                 </div>
     </header>
 
@@ -74,30 +91,23 @@ $username=$_SESSION['username'];
 </div>
 	<div id="courses">
 		<section class="container">
-			<h3>Subject List</h3>
+			<h3>Enrolled Course</h3>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="featured-box"> 
-					 			<?php
-                                        
-                                        include "../functions/connect.php";
-                                      
-                                        $sql = "SELECT * FROM `tbl_category` ";
-                                        $run = mysqli_query($conn, $sql);
-
-                                        while($row=mysqli_fetch_array($run, MYSQLI_ASSOC)){
-                                        
-                                            $id = $row['cat_Id'];
-                                         	$name = $row['name'];
-                                         	$description = $row['description'];
-                                            ?>
-						<div class="text">
-							<h3><?php
-							echo "<a href='cat-content.php?cat_Id=".$row["cat_Id"]."'>$name</a>";
-							?></h3>
-							<p><?php echo $description;?></p>
+						<?php foreach($enrolledCourseArr as $i): ?>
+							<div class="text">
+								<h3><a href="cat-content.php?cat_Id=<?= $i['cat_Id'] ?>"><?= $i['name'] ?></a></h3>
+								<p><?= $i['description'] ?></p>
+								<br>
 							</div>
-							    <?php }?>
+						<?php endforeach; ?>
+
+						<?php if(sizeof($enrolledCourseArr) == 0): ?>
+							<div class="text">
+								You have not enrolled in any course.
+							</div>
+						<?php endif; ?>
 					</div>
 				</div>
 				

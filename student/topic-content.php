@@ -56,7 +56,7 @@ $username=$_SESSION['username'];
 </head>
 <body ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
 	<!-- Fixed navbar -->
-<div class="navbar navbar-inverse">
+	<div class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
@@ -66,8 +66,8 @@ $username=$_SESSION['username'];
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="home.php">Home</a></li>
-		
+					<li class=""><a href="home.php">Home</a></li>
+  					<li class=""><a href="new-course.php">New Course</a></li>
 					<li class="dropdown">
 						<a href="../#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $username;?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">

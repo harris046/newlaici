@@ -1,12 +1,51 @@
 <?php
-  session_start();
-  if (isset($_SESSION['username'])&&$_SESSION['username']!=""){
-  }
-  else
-  {
-    header("Location:../index.php");
-  }
-$username=$_SESSION['username'];
+    session_start();
+    if (isset($_SESSION['username'])&&$_SESSION['username']!=""){
+    }
+    else{
+        header("Location:../index.php");
+    }
+    $username = $_SESSION['username'];
+    $user_Id = $_SESSION['user_Id'];
+
+    //get courses data
+    include "../functions/connect.php";
+
+    //all course
+    $sql = "SELECT t.cat_Id, t.name, t.description FROM tbl_category t";
+    $run = mysqli_query($conn, $sql);
+
+    $allCourseArr = [];
+    while($row=mysqli_fetch_array($run, MYSQLI_ASSOC)){
+        $allCourseArr[] = array(
+            'cat_Id' => $row['cat_Id'],
+            'name' => $row['name'],
+            'description' => $row['description'],
+            'enrolled' => 0,
+        );
+    }
+    
+    //enrolled course
+    $sql = "SELECT t.cat_Id, t.name, t.description FROM tbl_category t 
+            WHERE t.cat_Id IN (SELECT u.cat_Id FROM user_category u WHERE user_Id=$user_Id)";
+    $run = mysqli_query($conn, $sql);
+
+    $enrolledCourseArr = [];
+    while($row=mysqli_fetch_array($run, MYSQLI_ASSOC)){
+        $enrolledCourseArr[] = array(
+            'cat_Id' => $row['cat_Id'],
+        );
+    }
+
+    //process
+    for($i=0; $i<sizeof($allCourseArr); $i++){
+        for($a=0; $a<sizeof($enrolledCourseArr); $a++){
+            if($allCourseArr[$i]['cat_Id'] == $enrolledCourseArr[$a]['cat_Id']){
+                $allCourseArr[$i]['enrolled'] = 1;
+                break;
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +66,9 @@ $username=$_SESSION['username'];
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
 	<script src="../js/respond.min.js"></script>
-	<![endif]-->
+    <![endif]-->
+    
+    <script type="text/javascript" src="../js/main.js"></script>
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -62,58 +103,44 @@ $username=$_SESSION['username'];
 
 	<header id="head" class="secondary">
             <div class="container">
-                    <h1>Topics</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing eliras scele!</p>
-                </div>
+                <h1>Enroll New Course</h1>
+            </div>
     </header>
-
-
-<div class="container">
-
-
-</div>
+ 
 	<div id="courses">
 		<section class="container">
-			<h3>List of Topics</h3>
+			<h3>Available Courses</h3>
 			<div class="row">
-				<div class="col-md-4">
-					<div class="featured-box"> 
-					 			
-			<div class="list-group">
+                <div class="featured-box">    
+                    
+                
+                    <?php foreach($allCourseArr as $i) : ?>
+                        <div class="col-md-10">
+                            <div class="text">
+                                <h3><a href="cat-content.php?cat_Id=<?= $i['cat_Id'] ?>"><?= $i['name'] ?></a></h3>
+                                <p><?= $i['description']  ?></p>
+                            </div>
+                            <br><br>
+                        </div>   
+                        <div class="col-md-2">
+                            <?php if($i['enrolled'] == 0): ?>
+                                <button class="btn" onclick="enrollCourse(<?= $i['cat_Id'] ?>,<?= $user_Id ?>)" id="<?= $i['cat_Id'] ?>" >
+                                    Enroll
+                                </button>
+                            <?php else: ?>
+                                <button class="btn" style="background-color:green" id="<?= $i['cat_Id'] ?>">
+                                    <em class="fa fa-check">&nbsp;&nbsp;&nbsp;Enrolled</em>
+                                </button>
+                            <?php endif; ?>
+                        </div>                         
+                    <?php endforeach; ?>
 
-			 <?php
-        require_once "../functions/connect.php";
-       
-
-        $sql = mysqli_query($conn, "SELECT * FROM `tbl_topic`  WHERE `cat_Id`=".$_GET["cat_Id"]);
-        if(mysqli_num_rows($sql)==0)
-        {
-        echo "<p class='alert alert-danger'>"."No Post have been found"."</p>";
-        }
-        else                            
-        {
-        while($row=mysqli_fetch_array($sql, MYSQLI_ASSOC)){   
-        $id = $row['topic_Id'];
-        $title = $row['title'];
-        $category = $row['cat_Id'];
-        $content = $row['content'];
-        $datetime = $row['datetime_posted'];
-
-        echo "<a href='topic-content.php?topic_Id=".$row["topic_Id"]."' class='list-group-item'>$title</a>";
-        ?>
-       	 		</div>
-					</div>
-				</div>
-				
+                </div>
 			</div>
-  <?php
-}
-}
-  ?>
+
 		</section>
-	</div>
+    </div>
   
-		
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 	<script src="../js/modernizr-latest.js"></script> 
 	<script type='text/javascript' src='../js/jquery.min.js'></script>

@@ -158,3 +158,33 @@ function forgotPass(){
         form.reset();
     });
 }
+
+function enrollCourse(cat_Id, user_Id){
+    var xhr = getXHR();
+
+    xhr.onreadystatechange = function (){
+        if (xhr.readyState == 4){
+            if (xhr.status == 200){
+                var arr = JSON.parse(this.responseText);
+
+                if(arr.success == "success"){
+                    alert("Successfully enrolled!");
+                    var btn = document.getElementById(cat_Id);
+                    btn.innerHTML = "";
+                    btn.style.backgroundColor = "green";
+
+                    var em = document.createElement("em");
+                    em.className = "fa fa-check";
+                    em.innerHTML = "&nbsp;&nbsp;&nbsp;Enrolled";
+
+                    btn.appendChild(em);
+                }
+                else{
+                    alert("Something went wrong.");
+                }
+            }
+        }
+    }
+    xhr.open('GET', '../functions/enroll-course.php?user_Id=' + user_Id + '&cat_Id=' + cat_Id, true);
+    xhr.send();
+}
