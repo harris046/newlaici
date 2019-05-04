@@ -118,7 +118,7 @@ $username=$_SESSION['username'];
         while($row=mysqli_fetch_array($sql, MYSQLI_ASSOC)){   
         $id = $row['topic_Id'];
         $title = $row['title'];
-        $category = $row['cat_Id'];
+        // $category = $row['cat_Id'];
         $content = $row['content'];
         $datetime = $row['datetime_posted'];
 
@@ -126,7 +126,13 @@ $username=$_SESSION['username'];
         ?>
    
         <p>Topic Title: <?php echo $title;?></p>
-        <p>Category: <?php echo $category;?></p>
+        <p>Subject: <?php $sel = mysqli_query($conn, "SELECT * from tbl_category");
+													if($sel==true){
+														while($row=mysqli_fetch_assoc($sel)){
+															extract($row);
+															echo '<span value='.$cat_Id.'>'.$name.'</span>';
+														}
+													}?></p>
         <p>Date and Time: <?php echo $datetime;?></p>
         <p>Content: <br><?php echo "<div align=center><video width='400' height='400' controls><source src='../teacher/video/$content' type='video/mp4'>Your browser does
 not support the video tag.</video></div>"?></p>

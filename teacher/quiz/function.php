@@ -8,6 +8,7 @@ function dbcon(){
 	$db = "db_elearning";
 
 	$con = mysqli_connect($host,$user,$pwd, $db) or die ("ERROR Connecting to Database");
+	return $con;
 }
 
 function dbclose(){
