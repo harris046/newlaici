@@ -53,7 +53,8 @@ if(isset($_POST['upd'])){
                   if($sql==true)
                   {
                         echo '<script language="javascript">';
-                        echo 'alert("Successfully Added")';
+                        echo 'window.location.href = \'add.php\' ; ';
+                        echo 'alert("Successfully Added");';
                         echo '</script>';
                         echo '<meta http-equiv="refresh" content="0;url=add.php" />';
                   }
