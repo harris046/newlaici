@@ -126,7 +126,7 @@ $username=$_SESSION['username'];
         ?>
    
         <p>Topic Title: <?php echo $title;?></p>
-        <p>Subject: <?php $sel = mysqli_query($conn, "SELECT * from tbl_category");
+        <p>Subject: <?php $sel = mysqli_query($conn, "SELECT * from tbl_category WHERE `cat_Id`=".$_GET["cat_Id"]);
 													if($sel==true){
 														while($row=mysqli_fetch_assoc($sel)){
 															extract($row);
