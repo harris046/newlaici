@@ -45,16 +45,16 @@ if(isset($_POST['upd'])){
                   //  $query = "INSERT INTO `tbl_topic`( `content`) VALUES ('$target_file')";
 
                   //  mysqli_query($conn,$query);
-                    date_default_timezone_set("Asia/Taipei");
-                              $datetime=date("Y-m-d h:i:sa");
+                    // date_default_timezone_set("Asia/Taipei");
+                    //           $datetime=date("Y-m-d h:i:sa");
                   extract($_POST);
-                  $sql = mysqli_query($conn, "INSERT INTO `tbl_topic`(`title`, `content`, `datetime_posted`, `cat_Id`) VALUES ('$title','$target_file','$datetime','$category')");
+                  $sql = mysqli_query($conn, "INSERT INTO tbl_topic (title, content, cat_Id) VALUES ('$title','$target_file','$category')");
 
                   if($sql==true)
                   {
+                        header("Location: ./add.php");
                         echo '<script language="javascript">';
-                        echo 'window.location.href = \'add.php\' ; ';
-                        echo 'alert("Successfully Added");';
+                        echo 'alert("Successfully Added")';
                         echo '</script>';
                         echo '<meta http-equiv="refresh" content="0;url=add.php" />';
                   }
