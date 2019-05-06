@@ -151,6 +151,8 @@ function forgotPass(){
 
         alert("Reset password email sent! Please follow instructions in the email.");
 
+        window.location.href = "index.php";
+
     }).catch(function(error) {
         // An error happened.
         console.log("Error => " + error);
