@@ -145,39 +145,12 @@ not support the video tag.</video></div>"?></p>
   ?>
        	 				</div>
 					</div>
-								<div class="col-md-4 pull-right">
-									<div class="featured-box"> 
-									<h3>Sub-Topics</h3>
-										<?php
-                                        
-                                        include "../functions/connect.php";
-                                      
-                                        $sql = "SELECT * FROM `tbl_subtopic` ";
-                                        $run = mysqli_query($conn, $sql);
-								         if(mysqli_num_rows($run)==0)
-								        {
-								        echo "<p class='alert alert-danger'>"."No Sub topic have been found"."</p>";
-								        }
-								        else                            
-								        {
-                                        while($row=mysqli_fetch_array($run, MYSQLI_ASSOC)){
-                                        
-                                            $id = $row['sub_Id'];
-                                         	$sub_title = $row['sub_title'];
-                                         
-                                            ?>
-
-                                            <?php
-											echo "<a href='sub-content.php?sub_Id=".$row["sub_Id"]."'>$sub_title</a><br>";
-										?>
-										  <?php 
-										}
-										}
-
-										  ?>
+								<div class="col-md-4 pull-right" style="padding-top:50px; padding-right:100px; padding-bottom:50px; padding-left:80px;">
+									<div class="featured-box" > 
+										<a href="quiz/index.php" class="pull-right btn btn-primary">Practice</a>
 									</div>
 								</div>	
-								
+
 								<!-- Live Chat div -->
 								<div class="col-md-4 pull-right">
 									<div class="cc-live-discussion-app" data-channel-id="5ccd3a6061544d0001193929" data-channel-type="open" data-height="500px" data-width="100%"></div>
