@@ -33,8 +33,11 @@ if(isset($_POST['upd'])){
       if( in_array($videoFileType,$extensions_arr) ){
 
          // Check file size
-         if(($_FILES['content']['size'] >= $maxsize) || ($_FILES["content"]["size"] == 0)) {
-           echo "File too large. File must be less than 5MB.";
+         if(($_FILES['content']['size'] >= $maxsize) ){
+          echo "File too large. File must be less than 5MB.";
+         } 
+         else if(($_FILES["content"]["size"] == 0)) {
+           echo "No file attached.";
          }else{
            // Upload
            if(move_uploaded_file($_FILES['content']['tmp_name'],$target_file)){
