@@ -52,7 +52,7 @@ if(isset($_POST['upd'])){
 
                   if($sql==true)
                   {
-                        header("Location: ./add.php");
+                        // header("Location: ./add.php");
                         echo '<script language="javascript">';
                         echo 'alert("Successfully Added")';
                         echo '</script>';
