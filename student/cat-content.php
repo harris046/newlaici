@@ -99,7 +99,7 @@ $username=$_SESSION['username'];
         $content = $row['content'];
         $datetime = $row['datetime_posted'];
 
-        echo "<a href='topic-content.php?topic_Id=".$row["topic_Id"]."' class='list-group-item'>$title</a>";
+        echo "<a href='topic-content.php?topic_Id=".$row["topic_Id"]. "&cat_Id=" . $row["cat_Id"] . "' class='list-group-item'>$title</a>";
         ?>
        	 		</div>
 					</div>
