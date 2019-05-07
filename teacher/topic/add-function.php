@@ -17,7 +17,8 @@
 // echo var_dump($upd);
 
 if(isset($_POST['upd'])){
-      $maxsize = 500000242880; // 5MB
+      $maxsize = 200000000 ;
+      //500000242880; // 5MB
 
       $name = $_FILES['content']['name'];
       $target_dir = "../video/";
